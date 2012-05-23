@@ -36,16 +36,16 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-var argv = process.argv;
-var path = require('path');
+var path   = require('path')
+  , fs     = require('fs')
+  , util   = require('util')
+  , _      = require(path.join(__dirname, '..', 'lib', 'jsctags', 'underscore'))._
+  , ctags  = require(path.join(__dirname, '..', 'lib', 'jsctags', 'ctags'))
+  , getopt = require(path.join(__dirname, '..', 'lib', 'jsctags', 'getopt')).getopt
+  , log    = require(path.join(__dirname, '..', 'lib', 'jsctags', 'log'))
+  , Tags   = ctags.Tags;
 
-var _ = require('underscore')._;
-var fs = require('fs');
-var util = require('util');
-var ctags = require('ctags');
-var getopt = require('getopt').getopt;
-var log = require('log');
-var Tags = ctags.Tags;
+var argv = process.argv;
 
 function usage() {
     util.puts("usage: jsctags [options] path0 [.. pathN]");
